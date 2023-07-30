@@ -1,0 +1,22 @@
+add_newline = true
+
+[c]
+symbol = " "
+
+[cmake]
+symbol = "󰔷 "
+
+[haskell]
+symbol = " "
+
+[lua]
+symbol = " "
+
+[package]
+symbol = "󰏓 "
+
+[rust]
+symbol = " "
+
+[battery]
+disabled = true
