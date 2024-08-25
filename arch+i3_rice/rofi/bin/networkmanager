@@ -1,0 +1,21 @@
+#! /bin/bash
+
+rofi_command="rofi -theme config/networkmanager.rasi"
+rofi_scripts_path="$HOME/.config/rofi/bin"
+
+wifi_points=$(nmcli -f SSID,SIGNAL dev wifi | awk 'NR>1 && $2>30 && $1 != "--" {print $1}' | sort -u)
+
+
+selected_wifi=$(echo -e "$wifi_points" | $rofi_command -dmenu)
+
+if [[ -z "$selected_wifi" ]]; then
+    exit
+fi
+
+password=$("$rofi_scripts_path"/password "Password for \"$selected_wifi\":")
+
+echo "Connecting to $selected_wifi with password $password"
+nmcli device wifi connect "$selected_wifi" password "$password"
+if [[ $? -ne 0 ]]; then
+    echo "Cannot connect to $selected_wifi"
+fi

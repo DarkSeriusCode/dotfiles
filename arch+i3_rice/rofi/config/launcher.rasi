@@ -1,0 +1,74 @@
+@import "color_font.rasi"
+
+* {
+    background-color: @BG;
+    text-color: @FG;
+}
+
+configuration {
+    show-icons: true;
+    display-drun: "  ";
+    display-window: "  ";
+}
+
+window {
+    border: 3px;
+    border-color: @MAIN;
+    border-radius: 10;
+    width: 600px;
+    anchor: center;
+}
+
+mainbox {
+    padding: 5px;
+}
+
+inputbar {
+    padding: 7px;
+}
+
+prompt {
+    padding: 3px;
+}
+
+entry {
+    placeholder: "Find something";
+}
+
+listview {
+    padding: 2px;
+    spacing: 5px;
+    lines: 7;
+}
+
+element {
+    border-radius: 15;
+    children: [ element-icon, element-text ];
+}
+
+element-text {
+    vertical-align: 0.5;
+}
+
+element-icon {
+    size: 25px;
+    padding: 5px;
+}
+
+element selected.normal {
+    background-color: @MAIN;
+    text-color: @BG;
+}
+
+element-icon {
+    background-color: inherit;
+}
+
+element-text {
+    background-color: inherit;
+    text-color: inherit;
+}
+
+mode-switcher {
+    enabled: true;
+}

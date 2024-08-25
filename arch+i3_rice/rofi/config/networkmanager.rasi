@@ -1,0 +1,48 @@
+@import "color_font.rasi"
+
+* {
+    background-color: @BG;
+    text-color: @FG;
+}
+
+window {
+    border: 3px;
+    border-color: @MAIN;
+    border-radius: 10;
+    width: 350px;
+    anchor: center;
+}
+
+mainbox {
+    padding: 15px;
+    children: [ listview ];
+}
+
+listview {
+    lines: 7;
+    spacing: 10px;
+    padding: 5px;
+    dynamic: true;
+}
+
+element {
+    expand: true;
+    border: 2px;
+    border-color: @MAIN;
+    border-radius: 10;
+    padding: 10px;
+}
+
+element-text {
+    horizontal-align: 0.5;
+    font: "Caskaydia Cove NerdFont 15";
+}
+
+element-text selected.normal {
+    text-color: @BG;
+    background-color: @MAIN;
+}
+
+element selected.normal {
+    background-color: @MAIN;
+}

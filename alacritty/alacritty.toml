@@ -4,15 +4,11 @@ import = [
 
 [env]
 TERM = "xterm-256color"
+LC_ALL = "en_US.UTF-8"
 
 [window]
-position.x = 1301
-position.y = 168
-dimensions.columns = 148
-dimensions.lines = 41
-decorations = "None"
-opacity = 0.985
-blur = true
+decorations = "Full"
+opacity = 0.95
 
 [font]
 normal.family = "CaskaydiaCove Nerd Font"

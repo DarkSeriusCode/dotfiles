@@ -1,0 +1,44 @@
+@import "color_font.rasi"
+
+* {
+    background-color: @BG;
+    text-color: @FG;
+}
+
+window {
+    border: 3px;
+    border-color: @MAIN;
+    border-radius: 10;
+    width: 365px;
+    anchor: center;
+}
+
+inputbar {
+    enabled: false;
+}
+
+listview {
+    layout: horizontal;
+    padding: 15px;
+    spacing: 20px;
+}
+
+element {
+    border: 2px;
+    border-color: @MAIN;
+    border-radius: 10;
+    padding: 30px;
+}
+
+element-text {
+    font: "Caskaydia Cove NerdFont 20";
+}
+
+element-text selected.normal {
+    text-color: @BG;
+    background-color: @MAIN;
+}
+
+element selected.normal {
+    background-color: @MAIN;
+}
