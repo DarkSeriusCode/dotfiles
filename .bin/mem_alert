@@ -1,0 +1,20 @@
+#!/bin/bash
+
+# Set the delay in seconds
+DELAY=5  # Change this to your desired delay
+# Set the maximum RAM usage percentage
+MAX_USAGE=90  # Change this to your desired maximum usage percentage
+
+while true; do
+    # Get the current RAM usage percentage
+    current_usage=$(free | awk '/^Mem:/{printf("%.0f"), $3/$2 * 100.0}')
+
+    # Check if current usage exceeds MAX_USAGE
+    if [ "$current_usage" -gt "$MAX_USAGE" ]; then
+        dunstify "High RAM Usage" "Current RAM usage is at ${current_usage}% which exceeds the limit of ${MAX_USAGE}%."
+    fi
+
+    # Wait for the specified delay
+    sleep "$DELAY"
+done
+

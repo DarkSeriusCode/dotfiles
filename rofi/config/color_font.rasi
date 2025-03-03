@@ -1,6 +1,6 @@
 * {
-    font: "Caskaydia Cove NerdFont 12";
-    FG: #cdd6f4;
-    BG: #1e1e2e;
-    MAIN: #a6e3a1;
+    font: "Caskaydia Cove NerdFont 14";
+    FG: #fbf1c7;
+    BG: #3c3836;
+    MAIN: #98971a;
 }

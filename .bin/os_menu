@@ -1,0 +1,9 @@
+#! /bin/bash
+
+eww active-windows | grep "os_menu"
+
+if [[ $? -eq 1 ]]; then
+    eww open os_menu
+else
+    eww close os_menu
+fi

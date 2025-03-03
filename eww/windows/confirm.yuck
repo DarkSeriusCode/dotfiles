@@ -1,0 +1,21 @@
+(defwindow confirm [callback]
+  :windowtype "normal"
+  :wm-ignore true
+  :geometry (geometry
+              :width "10px"
+              :height "10px"
+              :anchor "center")
+  (confirm_layout :callback callback)
+)
+
+(defwidget confirm_layout [callback]
+    (box :class "confirm_box" :orientation "vertical" :space-evenly false
+        (label :class "confirm_text" :text "Are you sure?")
+        (button :class "confirm_btn" :onclick "${callback} && eww close confirm"
+            (label :class "confirm_btn__text" :text "Yes")
+        )
+        (button :class "close_btn" :onclick "eww close confirm"
+            (label :class "close_btn__text" :text "No")
+        )
+    )
+)

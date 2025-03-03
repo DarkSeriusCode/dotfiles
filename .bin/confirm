@@ -1,0 +1,3 @@
+#! /bin/bash
+
+echo -e "Yes\nNo" | rofi -theme config/confirm.rasi -mesg "$1" -dmenu

@@ -1,0 +1,102 @@
+.wndw {
+  // border: 2px solid $fg3;
+}
+
+.avatar, .avatar * {
+  background: $bg1;
+}
+
+.avatar {
+  margin: $gap_size;
+  margin-right: 0;
+  border-radius: 10px;
+}
+
+.avatar__img {
+  background: url("/home/darkserius/.avatar");
+  background-size: 110%;
+  background-position: 50% 50%;
+  min-height: 200px;
+  min-width: 200px;
+  margin: 10px 25px 10px 25px;
+  border-radius: 100%;
+}
+
+.avatar__lbl {
+  font-size: 26;
+  margin-bottom: 5px;
+  color: $fg0;
+  border-radius: 100%;
+}
+
+
+.power_menu {
+  margin: $gap_size;
+  margin-bottom: 0px;
+}
+
+.power_menu__btn, .power_menu__btn__label {
+  background: $bg1;
+}
+
+.power_menu__btn {
+  font-size: 36;
+  border: none;
+  padding: 0px 25px 0px 25px;
+  margin-bottom: $gap_size;
+
+  &:hover {
+    background: $fg4;
+  }
+}
+
+.power_menu__btn__label {
+  color: $fg;
+  background: inherit;
+  margin: 15px 10px 15px 0px;
+}
+
+.poweroff_btn {
+  color: $red_dark;
+}
+
+.poweroff_btn:hover {
+  background: $red_dark;
+  color: $bg0_h;
+}
+
+.poweroff_lbl {
+  color: inherit;
+}
+
+
+.system_monitor {
+  margin: 0 $gap_size $gap_size $gap_size;
+  padding: 10px 0 5px 0;
+}
+
+.system_monitor, .system_monitor * {
+  background: $bg1;
+  border-radius: 10px;
+}
+
+.system_info__icon {
+    font-size: 32;
+    padding: 40px 35px 40px 40px;
+    border-radius: 100%;
+}
+
+.system_info__label {
+  color: $fg0;
+  font-size: 18;
+  margin-top: 15px;
+  background: $bg2;
+  border-radius: 90px;
+  border: 10px solid $bg1;
+  border-top: 5px solid $bg1;
+  border-bottom: 5px solid $bg1;
+}
+
+.sys_cpu { color: $blue_dark; }
+.sys_mem { color: $purple_dark; }
+.sys_disk { color: $yellow_dark; }

@@ -200,7 +200,7 @@ exec dunst
 exec_always setxkbmap 'us,ru' -option 'grp:ctrl_alt_toggle'
 
 # Monitors
-exec_always xrandr --output LVDS-1 --auto --right-of VGA-1 &
+# exec_always xrandr --output LVDS-1 --auto --right-of VGA-1 &
 
 # Wallpapers
 exec_always feh --bg-fill /home/darkserius/.bg_image
@@ -224,11 +224,12 @@ default_border pixel 0
 default_floating_border pixel 0
 
 # Gaps
-gaps inner 5 px
-gaps outer 5 px
-workspace 2 gaps inner 3px
-workspace 2 gaps outer 3px
-smart_gaps inverse_outer
+gaps inner 10 px
+gaps top 30 px
+# Used before but now it is useless
+# workspace 2 gaps inner 3px
+# workspace 2 gaps outer 3px
+# smart_gaps inverse_outer
 
 # Workspaces
 # 1 - main workspace (tmux + nvim or sometimes browser)
@@ -239,8 +240,10 @@ workspace 3 output VGA-1
 assign [class="(?i)firefox"] 2
 assign [class="(?i)telegram"] 3
 
-# Picom
-exec_always picom &
-
 # Autostart
-exec $HOME/.bin/user_autostart
+exec_always picom &
+exec eww daemon
+exec xbindkeys
+exec udiskie --automount
+exec_always mem_alert
+

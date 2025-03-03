@@ -1,0 +1,37 @@
+.confirm_box {
+  padding: 20px;
+  font-size: 40;
+  color: $fg0;
+}
+
+.confirm_text, .confirm_btn, .close_btn, .confirm_btn__text, .close_btn__text {
+  color: inherit;
+  background: inherit;
+}
+
+.confirm_text {
+  margin-bottom: 20px;
+}
+
+.confirm_btn {
+  border: 2px solid $fg3;
+  border-radius: 10px;
+  padding: 10px 0px;
+  color: inherit;
+  margin-bottom: 10px;
+  &:hover {
+    background: $green_dark;
+    color: $bg0_h;
+  }
+}
+
+.close_btn {
+  border: 2px solid $fg3;
+  border-radius: 10px;
+  padding: 10px 0px;
+  color: inherit;
+  &:hover {
+    background: $red_dark;
+    color: $bg0_h;
+  }
+}

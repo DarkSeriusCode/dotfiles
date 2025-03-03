@@ -1,0 +1,5 @@
+#! /bin/bash
+
+WALLPAPER=$1
+cp $1 "$HOME/.bg_image"
+feh --bg-fill "$HOME/.bg_image"

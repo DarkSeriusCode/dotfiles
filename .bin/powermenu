@@ -1,0 +1,35 @@
+#! /bin/bash
+
+rofi_command="rofi -theme config/powermenu.rasi"
+rofi_scripts_path="$HOME/.config/rofi/bin"
+
+# icons
+shutdown=" "
+lock=" "
+reboot=" "
+
+options="$shutdown\n$lock\n$reboot"
+
+# running
+selected=$(echo -e "$options" | $rofi_command -dmenu)
+case $selected in
+    "$shutdown")
+        confirm_res=$("$rofi_scripts_path"/confirm "Do you really wanna shutdown your Void?")
+        if [[ $confirm_res == "Yes" ]]; then
+            echo "Shutting PC down!!!"
+            loginctl poweroff
+        fi
+        ;;
+
+    "$lock")
+        betterlockscreen --lock --off 30
+        ;;
+
+    "$reboot")
+        confirm_res=$("$rofi_scripts_path"/confirm "Do you really wanna reboot your Void?")
+        if [[ $confirm_res == "Yes" ]]; then
+            echo "Rebooting PC!!!"
+            loginctl reboot
+        fi
+        ;;
+esac

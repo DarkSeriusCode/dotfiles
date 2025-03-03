@@ -1,0 +1,84 @@
+(defpoll user_name :interval "48h" `whoami`)
+(defvar avatar_path "/home/darkserius/.avatar")
+(defpoll cpu_usage :interval "1s" `scripts/cpu`)
+(defpoll mem_usage :interval "1s" `scripts/mem`)
+(defpoll disk_usage :interval "10s" `scripts/disk`)
+
+(defwindow os_menu
+  :stacking "fg"
+  :windowtype "normal"
+  :wm-ignore true
+  :geometry (geometry
+              :width "10px"
+              :height "10px"
+              :x "80%"
+              :y "3%")
+  (os_menu_layout)
+)
+
+(defwidget os_menu_layout []
+    (box :orientation "vertical" :space-evenly false :class "wndw"
+        (box :space-evenly false
+            (avatar)
+            (power_menu)
+        )
+        (system_monitor)
+    )
+)
+
+(defwidget avatar []
+    (eventbox
+        :onclick "firefox https://github.com/DarkSeriusCode"
+        (box :class "avatar" :orientation "vertical" :space-evenly false
+            (box :class "avatar__img" :space-evenly false)
+            (label :class "avatar__lbl" :text user_name)
+        )
+    )
+)
+
+(defwidget power_menu []
+    (box :class "power_menu" :orientation "vertical" :halign "end"
+        (button :class "power_menu__btn poweroff_btn"
+                :onclick "eww open confirm --arg callback='loginctl poweroff'"
+            (label :class "poweroff_lbl power_menu__btn__label " :text "⏻")
+        )
+        (button :class "power_menu__btn" :onclick "loginctl lock-session"
+            (label :class "power_menu__btn__label" :text "" :halign "center")
+        )
+        (button :class "power_menu__btn"
+                :onclick "eww open confirm --arg callback='loginctl reboot'"
+            (label :class "power_menu__btn__label" :text "")
+        )
+    )
+)
+
+(defwidget system_monitor []
+    (box :class "system_monitor" :orientation "h"
+        (system_info :icon " " :value cpu_usage :cls "sys_cpu")
+        (system_info :icon " " :value mem_usage :cls "sys_mem")
+        (system_info :icon " " :value disk_usage :cls "sys_disk")
+    )
+)
+
+(defwidget system_info [?cls icon value]
+    (box :class "system_info" :orientation "vertical" :space-evenly false
+        (circular-progress :class "${cls}"
+            :value value
+            :start-at 75.0
+            :thickness 10
+            (label :class "system_info__icon"
+                :text icon
+                :limit-width 2
+                :show_truncated false
+                :wrap false
+            )
+        )
+        (label :class "system_info__label"
+            :text "${value}%"
+            :limit-width 2
+            :show_truncated false
+            :wrap false
+        )
+    )
+)
+

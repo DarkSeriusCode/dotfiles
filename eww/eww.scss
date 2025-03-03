@@ -1,0 +1,24 @@
+$bg0_h: #1d2021;
+$bg0: #282828;
+$bg1: #3c3836;
+$bg2: #504945;
+$fg:  #ebdbb2;
+$fg0: #fbf1c7;
+$fg2: #d5c4a1;
+$fg3: #bdae93;
+$fg4: #a89984;
+$red_dark: #cc241d;
+$green_dark: #98971a;
+$blue_dark: #4585b8;
+$purple_dark: #b16286;
+$yellow_dark: #d79921;
+$gap_size: 15;
+
+* {
+  background: $bg0;
+  box-shadow: none;
+  text-shadow: none;
+}
+
+@import "styles/os_menu.scss"
+@import "styles/confirm.scss"
