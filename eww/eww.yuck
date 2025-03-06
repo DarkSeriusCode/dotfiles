@@ -1,2 +1,3 @@
 (include "windows/os_menu.yuck")
 (include "windows/confirm.yuck")
+(include "windows/light.yuck")

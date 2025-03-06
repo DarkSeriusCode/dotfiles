@@ -1,0 +1,32 @@
+.light_value {
+  background: $bg0_h;
+  color: $fg;
+  padding-right: 10px;
+}
+
+.light_value_icon {
+  padding: 0 10 0 10;
+  font-size: 30;
+}
+
+.light_value_bar {
+  margin-right: 15px;
+}
+
+.light_value_bar slider {
+   background: transparent;
+}
+
+.light_value_bar trough {
+  background: $fg;
+}
+
+.light_value_bar highlight {
+  background: $yellow;
+  padding: 3 0 3 0;
+}
+
+.light_value_value {
+  font-size: 14;
+  font-weight: bold;
+}

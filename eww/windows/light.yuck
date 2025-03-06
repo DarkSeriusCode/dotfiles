@@ -1,0 +1,19 @@
+(defpoll lightness :interval "0ms" `light -G | awk '{printf "%.0f", $1}'`)
+
+(defwindow light
+    :geometry (geometry :y "-60px"
+           :width "250px"
+           :height "50px"
+           :anchor "bottom center")
+    :windowtype "dialog"
+    :class "wndw"
+    :wm-ignore true
+(light_value))
+
+(defwidget light_value []
+    (box :class "light_value" :space-evenly false
+        (label :class "light_value_icon" :text " ")
+        (scale :class "light_value_bar" :min 0 :max 100 :value lightness :active false :hexpand true)
+        (label :class "light_value_value" :text "${lightness}")
+    )
+)

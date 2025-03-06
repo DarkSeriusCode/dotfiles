@@ -1,0 +1,26 @@
+#!/bin/bash
+
+case "$1" in
+    -u | --up)
+        light -A 15
+        ;;
+    -d | --down)
+        light -U 15
+        ;;
+    "")
+        echo "Usage: $(basename $0) [options]"
+        echo "  -u  --up    Increase the brightness"
+        echo "  -d  --down  Decrease the brightness"
+        exit 1
+        ;;
+    *)
+        echo "Unknown action $1!"
+        exit 1
+        ;;
+esac
+
+exec > /dev/null 2>&1
+if [[ "$(eww active-windows | grep 'light')" == "" ]]; then
+    eww open light
+    (sleep 4 && eww close light) &
+fi

@@ -1,21 +1,36 @@
 #! /bin/bash
-
 rofi_command="rofi -theme config/networkmanager.rasi"
 rofi_scripts_path="$HOME/.config/rofi/bin"
 
-wifi_points=$(nmcli -f SSID,SIGNAL dev wifi | awk 'NR>1 && $2>30 && $1 != "--" {print $1}' | sort -u)
+wifi_points=$(nmcli -f SSID,SIGNAL dev wifi | awk -F'  +' 'NR>1 && $1 != "--" {print "   " $1}' | sort -u)
 
+echo -e "$wifi_points"
 
-selected_wifi=$(echo -e "$wifi_points" | $rofi_command -dmenu)
+selected_wifi=$(echo -e "$wifi_points\nDisconnect" | $rofi_command -dmenu)
 
 if [[ -z "$selected_wifi" ]]; then
     exit
 fi
+if [[ "$selected_wifi" == "Disconnect" ]]; then
+    nmcli device disconnect wlp1s0
+fi
+selected_wifi=$(echo -e "$selected_wifi" | sed 's/^...//')
 
-password=$("$rofi_scripts_path"/password "Password for \"$selected_wifi\":")
+nmcli connection show "$selected_wifi" | grep 802-11-wireless-security.psk
+if [[ $? -eq 1 ]]; then
+    echo $?
+    password="password $("$rofi_scripts_path"/password "Password for \"$selected_wifi\":")"
+fi
 
-echo "Connecting to $selected_wifi with password $password"
-nmcli device wifi connect "$selected_wifi" password "$password"
-if [[ $? -ne 0 ]]; then
-    echo "Cannot connect to $selected_wifi"
+
+echo "Connecting to $selected_wifi with $password"
+nmcli device wifi connect "$selected_wifi" $password > /tmp/net_conn
+if [[ "$(cat /tmp/net_conn | grep 'Passwords or encryption keys are required')" != "" ]]; then
+    password="password $("$rofi_scripts_path"/password "Password for \"$selected_wifi\":")"
+    echo "Connecting to $selected_wifi with $password"
+    nmcli device wifi connect "$selected_wifi" $password > /cat/net_conn
+fi
+
+if [[ "$(cat /tmp/net_conn | grep 'key-mgmt: property is missing')" != "" ]]; then
+    nmcli connection delete "$selected_wifi"
 fi

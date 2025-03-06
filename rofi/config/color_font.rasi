@@ -2,5 +2,5 @@
     font: "Caskaydia Cove NerdFont 14";
     FG: #fbf1c7;
     BG: #3c3836;
-    MAIN: #98971a;
+    BORDER: #1d2021;
 }

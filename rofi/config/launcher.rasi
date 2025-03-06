@@ -3,6 +3,7 @@
 * {
     background-color: @BG;
     text-color: @FG;
+    MAIN: #b16286;
 }
 
 configuration {
@@ -13,7 +14,7 @@ configuration {
 
 window {
     border: 3px;
-    border-color: @MAIN;
+    border-color: @BORDER;
     border-radius: 8;
     width: 600px;
     anchor: center;

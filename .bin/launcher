@@ -1,3 +1,0 @@
-#! /bin/bash
-
-rofi -show drun -modi "window,drun" -theme config/launcher.rasi

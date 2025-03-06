@@ -11,14 +11,18 @@ $red_dark: #cc241d;
 $green_dark: #98971a;
 $blue_dark: #4585b8;
 $purple_dark: #b16286;
+$orange_dark: #d65d0e;
+$aqua_dark: #689d6a;
 $yellow_dark: #d79921;
+$yellow: #fabd2f;
 $gap_size: 15;
 
 * {
-  background: $bg0;
+  background: inherit;
   box-shadow: none;
   text-shadow: none;
 }
 
 @import "styles/os_menu.scss"
 @import "styles/confirm.scss"
+@import "styles/light.scss"
