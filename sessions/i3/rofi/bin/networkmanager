@@ -14,7 +14,7 @@ fi
 if [[ "$selected_wifi" == "Disconnect" ]]; then
     nmcli device disconnect wlp1s0
 fi
-selected_wifi=$(echo -e "$selected_wifi" | sed 's/^...//')
+selected_wifi=$(echo -e "$selected_wifi" | sed 's/^....//')
 
 nmcli connection show "$selected_wifi" | grep 802-11-wireless-security.psk
 if [[ $? -eq 1 ]]; then

@@ -1,0 +1,25 @@
+#!/bin/bash
+
+CONFIG="$HOME/.config"
+
+install_conf() {
+    ln -sf "$(pwd)/$1" $CONFIG
+    echo "* $1 -> $CONFIG"
+}
+
+install_home() {
+    ln -sf "$(pwd)/$1" $HOME
+    echo "* $1 -> $HOME"
+}
+
+install_home() {
+    ln -sf "$(pwd)/$1" "$HOME/$2"
+    echo "* $1 -> $HOME/$2"
+}
+
+install_home .tmux.conf
+# install_home .vimrc
+install_home .zshrc
+install_home sessions .sessions
+
+install_conf starship.toml

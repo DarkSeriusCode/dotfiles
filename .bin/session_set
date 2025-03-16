@@ -1,0 +1,39 @@
+#!/bin/bash
+
+SESSIONS_DIR="$HOME/.sessions"
+
+print_list=false
+
+while getopts "l" opt; do
+    case $opt in
+        l)
+            print_list=true
+        ;;
+        \?)
+            echo "Invalid option: -$OPTARG" >&2
+            exit 1
+        ;;
+    esac
+done
+
+shift $((OPTIND - 1))
+
+if [ "$#" -gt 1 ]; then
+  echo "Error: Only one positional argument is allowed." >&2
+  exit 1
+fi
+
+if [ "$print_list" = true ]; then
+    ls $SESSIONS_DIR
+fi
+
+if [ "$#" -eq 1 ]; then
+    if [ -d "$SESSIONS_DIR/$1" ]; then
+        echo "Init $1 session"
+        exec "$SESSIONS_DIR/$1/init"
+        exec startx
+    else
+        echo "Session $1 doesn't exist!"
+        exit 1
+    fi
+fi
