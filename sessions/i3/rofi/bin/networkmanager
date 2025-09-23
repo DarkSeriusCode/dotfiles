@@ -13,6 +13,7 @@ if [[ -z "$selected_wifi" ]]; then
 fi
 if [[ "$selected_wifi" == "Disconnect" ]]; then
     nmcli device disconnect wlp1s0
+    exit
 fi
 selected_wifi=$(echo -e "$selected_wifi" | sed 's/^....//')
 

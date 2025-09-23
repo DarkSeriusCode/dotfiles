@@ -34,7 +34,7 @@ cmakeb() {
 }
 
 cmakem() {
-    cmake --build build --target $1
+    cmake --build build
 }
 
 cmaker() {

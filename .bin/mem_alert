@@ -11,10 +11,10 @@ while true; do
 
     # Check if current usage exceeds MAX_USAGE
     if [ "$current_usage" -gt "$MAX_USAGE" ]; then
+        # Send notification
         dunstify "High RAM Usage" "Current RAM usage is at ${current_usage}% which exceeds the limit of ${MAX_USAGE}%."
     fi
 
     # Wait for the specified delay
     sleep "$DELAY"
-done
-
+done > /dev/null 2>&1
